@@ -31,3 +31,15 @@ export PYTHONPATH=$(ZIPS=(""/python/lib/*.zip); IFS=:; echo "${ZIPS[*]}"):$PYTHO
 
 source ~/.bashrc
 ```
+
+## Run a simple spark program
+```python
+import findspark
+findspark.init()
+import pyspark
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+sc = spark.sparkContext
+
+sc.parallelize([1, 2]).collect()
+```
